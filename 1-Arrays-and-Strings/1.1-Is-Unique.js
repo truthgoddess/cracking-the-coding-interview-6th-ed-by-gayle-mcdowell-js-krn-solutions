@@ -1,4 +1,4 @@
-//function to check whethere or not string has all unique characters
+//function to check whether or not string has all unique characters
 
 let allUniqueStr = 'abcdefghz'
 let theOtherKind = 'hahanowicanwriteanything'
@@ -36,6 +36,7 @@ function uniqueChar2(str) {
   return true
 }
 
+console.group('uniqueChar1 quick tests')
 console.log(uniqueChar1(allUniqueStr)) //true
 console.log(uniqueChar1(theOtherKind)) //false
 console.log(uniqueChar1(emptyStr)) //-1
@@ -43,6 +44,8 @@ console.log(uniqueChar1(stringWithNonAN)) //false
 console.log(uniqueChar1(stringWithNonANUnique)) //true
 console.log(uniqueChar1(array)) //-1
 console.log(uniqueChar1(object)) //-1
+console.groupEnd()
+console.group('uniqueChar2 quick tests')
 console.log(uniqueChar2(allUniqueStr)) //true
 console.log(uniqueChar2(theOtherKind)) //false
 console.log(uniqueChar2(emptyStr)) //-1
@@ -50,3 +53,4 @@ console.log(uniqueChar2(stringWithNonAN)) //false
 console.log(uniqueChar2(stringWithNonANUnique)) //true
 console.log(uniqueChar2(array)) //-1
 console.log(uniqueChar2(object)) //-1
+console.groupEnd()
