@@ -1,0 +1,14 @@
+{
+  "name": "cracking-the-coding-interview-6th-ed-by-gayle-mcdowell-js-krn-solutions",
+  "version": "1.0.0",
+  "description": "Solutions for your consideration!",
+  "engines": {
+    "node": "~12.11.1"
+  },
+  "scripts": {},
+  "author": "Kate Norton",
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
+}
