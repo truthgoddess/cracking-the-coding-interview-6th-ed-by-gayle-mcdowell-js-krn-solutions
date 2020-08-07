@@ -16,10 +16,8 @@ function oneAway(s1, s2) {
       }
     }
     return true
-  }
-
-  //the only other case of true return is if either string has one extra letter
-  if (s1.length != s2.length) {
+  } else {
+    //the only other case of true return is if either string has one extra letter
     let extraLetter = false
     let longerString = s1.length > s2.length ? s1 : s2
     let shorterString = longerString === s1 ? s2 : s1
