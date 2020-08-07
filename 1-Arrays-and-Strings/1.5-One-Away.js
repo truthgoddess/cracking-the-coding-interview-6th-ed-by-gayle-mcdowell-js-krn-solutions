@@ -22,7 +22,7 @@ function oneAway(s1, s2) {
     let longerString = s1.length > s2.length ? s1 : s2
     let shorterString = longerString === s1 ? s2 : s1
     for (let i = 0, j = 0; i < longerString.length - 1; i++, j++) {
-      if (shorterString[i] != longerString[j]) {
+      if (shorterString[i] !== longerString[j]) {
         if (!extraLetter) {
           extraLetter = !extraLetter
           i--
