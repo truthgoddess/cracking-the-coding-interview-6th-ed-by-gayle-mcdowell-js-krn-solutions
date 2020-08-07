@@ -1,4 +1,5 @@
 //given two strings, is the second the first with 1) one letter added, 2) one letter changed, 3) one letter removed
+//time O(n), space O(n)
 function oneAway(s1, s2) {
   //if they are the same string
   if (s1 === s2) return true
