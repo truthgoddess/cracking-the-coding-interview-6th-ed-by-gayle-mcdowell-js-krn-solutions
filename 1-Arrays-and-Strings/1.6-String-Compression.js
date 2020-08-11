@@ -9,8 +9,7 @@ function stringCompression(str = '') {
   let stringBuilder = [str[0]]
   for (let i = 1; i < str.length; i++) {
     if (str[i] !== currentLetter) {
-      stringBuilder.push(count) //count old letter
-      stringBuilder.push(str[i]) //new letter
+      stringBuilder.push(count, str[i])
       count = 1
       currentLetter = str[i]
     } else {
