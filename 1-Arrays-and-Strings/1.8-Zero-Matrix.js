@@ -143,8 +143,8 @@ console.log(zeroMatrix(matrix2))
 console.log(zeroMatrix(matrix3))
 /*
 [
-  ['e', 0, 'a', 1],
-  ['f', 0, 'b', 2],
+  ['e', 0, 'a', 0],
+  ['f', 0, 'b', 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
 ]
