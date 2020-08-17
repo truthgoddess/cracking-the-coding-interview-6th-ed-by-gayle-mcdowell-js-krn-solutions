@@ -1,24 +1,26 @@
-'use strict'
 //function to check whether or not string has all unique characters
-let allUniqueStr = 'abcdefghz'
-let theOtherKind = 'hahanowicanwriteanything'
-let emptyStr = ''
-let stringWithNonAN = '#$%###'
-let stringWithNonANUnique = '!@#$%^'
+
+let allUniqueStr: string = 'abcdefghz'
+let theOtherKind: string = 'hahanowicanwriteanything'
+let emptyStr: string = ''
+let stringWithNonAN: string = '#$%###'
+let stringWithNonANUnique: string = '!@#$%^'
+
 //with additional data structure
 //time O(n), space O(1)
-function uniqueChar1(str) {
+function uniqueChar1(str: string) {
   if (str === '') return -1
-  let set = new Set()
+  let set = new Set<string>()
   for (let letter of str) {
     if (set.has(letter)) return false
     else set.add(letter)
   }
   return true
 }
+
 //without additional data structure
 //time O(n^2), space O(1)
-function uniqueChar2(str) {
+function uniqueChar2(str: string) {
   if (str === '') return -1
   for (let i = 0; i < str.length; i++) {
     for (let j = i + 1; j < str.length; j++) {
@@ -29,6 +31,7 @@ function uniqueChar2(str) {
   }
   return true
 }
+
 console.group('uniqueChar1 quick tests')
 console.log(uniqueChar1(allUniqueStr)) //true
 console.log(uniqueChar1(theOtherKind)) //false
