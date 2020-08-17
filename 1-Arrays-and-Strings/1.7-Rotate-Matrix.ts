@@ -1,16 +1,23 @@
-'use strict'
 //given an image represented by an N x N matrix, return image rotated 90 degress in place
+
 //time O(n ^ 2), space O(n)
+
 //takes the position of the top left of a square, a point position, the side length of square
 //returns the coordinate it would move to if rotated 90 degrees
-function cellClockwise90(topLeftX, topLeftY, squareSideLength, startX, startY) {
+function cellClockwise90(
+  topLeftX: number,
+  topLeftY: number,
+  squareSideLength: number,
+  startX: number,
+  startY: number
+): number[] {
   if (startX < topLeftX || startY < topLeftY) return []
-  let XLeast = topLeftX
-  let XMost = topLeftX + squareSideLength - 1
-  let YLeast = topLeftY
-  let YMost = topLeftY + squareSideLength - 1
-  let currentX = startX
-  let currentY = startY
+  let XLeast: number = topLeftX
+  let XMost: number = topLeftX + squareSideLength - 1
+  let YLeast: number = topLeftY
+  let YMost: number = topLeftY + squareSideLength - 1
+  let currentX: number = startX
+  let currentY: number = startY
   for (let i = 0; i < squareSideLength - 1; i++) {
     //in the top part of square
     if (currentY === YLeast && currentX < XMost) {
@@ -31,15 +38,23 @@ function cellClockwise90(topLeftX, topLeftY, squareSideLength, startX, startY) {
   }
   return [currentX, currentY]
 }
+
 //makes deep copy of nested matrix
-function copyMatrix(matrix) {
+function copyMatrix(matrix: any[][]): any[][] {
   return matrix.map((arr) => {
     return arr.slice()
   })
 }
+
 //given the corner of a square and a square length, and passing the original matrix and the copy
 //rotates all points in square designated in copyMatrix
-function rotateSquare(minX, minY, squareLength, matrix, matrixCopy) {
+function rotateSquare(
+  minX: number,
+  minY: number,
+  squareLength: number,
+  matrix: any[][],
+  matrixCopy: any[][]
+): void {
   for (let x = minX; x < squareLength + minX; x++) {
     for (let y = minY; y < squareLength + minY; y++) {
       if (
@@ -61,8 +76,9 @@ function rotateSquare(minX, minY, squareLength, matrix, matrixCopy) {
     }
   }
 }
+
 //rotates a square matrix
-function rotateMatrix(matrix) {
+function rotateMatrix(matrix: any[][]): any[][] {
   let minX = 0
   let minY = 0
   let matrixCopy = copyMatrix(matrix)
@@ -73,12 +89,14 @@ function rotateMatrix(matrix) {
   }
   return matrixCopy
 }
+
 console.log(
   rotateMatrix([
     [1, 2],
     [3, 4],
   ])
 )
+
 /*
     [3,1],
     [4,2]
@@ -90,6 +108,7 @@ console.log(
     [7, 8, 9],
   ])
 )
+
 /*
     [7, 4, 1],
     [8, 5, 2],
@@ -103,11 +122,12 @@ console.log(
     ['e', 'f', 'g', 'h'],
   ])
 )
+
 /*
    ['e', 5, 'a', 1],
    ['f', 6, 'b', 2],
    ['g', 7, 'c', 3],
-   ['h', 8, 'd', 4],
+   ['h', 8, 'd', 4], 
 */
 console.log(
   rotateMatrix([
@@ -118,6 +138,7 @@ console.log(
     ['ant', 'bug', 'happy', 'girl', 'thing'],
   ])
 )
+
 /*
    ['ant',   'e',  5,  'a',  1],
    ['bug',   'f',  6,  'b',  2],
