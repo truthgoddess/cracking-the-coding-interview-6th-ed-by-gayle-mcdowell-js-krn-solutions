@@ -5,7 +5,9 @@
   "engines": {
     "node": "~12.11.1"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "tsc"
+  },
   "author": "Kate Norton",
   "dependencies": {},
   "devDependencies": {

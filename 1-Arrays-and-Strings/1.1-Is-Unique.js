@@ -1,14 +1,17 @@
 'use strict'
 //function to check whether or not string has all unique characters
-let allUniqueStr = 'abcdefghz'
-let theOtherKind = 'hahanowicanwriteanything'
-let emptyStr = ''
-let stringWithNonAN = '#$%###'
-let stringWithNonANUnique = '!@#$%^'
+let TC1p1
+TC1p1 = {
+  allUniqueStr: 'abcde',
+  theOtherKind: 'hahanowicanwriteanything',
+  emptyStr: '',
+  stringWithNonAN: '#$%###',
+  stringWithNonANUnique: '!@#$%^',
+}
 //with additional data structure
 //time O(n), space O(1)
 function uniqueChar1(str) {
-  if (str === '') return -1
+  if (str === '') return false
   let set = new Set()
   for (let letter of str) {
     if (set.has(letter)) return false
@@ -30,16 +33,16 @@ function uniqueChar2(str) {
   return true
 }
 console.group('uniqueChar1 quick tests')
-console.log(uniqueChar1(allUniqueStr)) //true
-console.log(uniqueChar1(theOtherKind)) //false
-console.log(uniqueChar1(emptyStr)) //-1
-console.log(uniqueChar1(stringWithNonAN)) //false
-console.log(uniqueChar1(stringWithNonANUnique)) //true
+console.log(uniqueChar1(TC1p1.allUniqueStr)) //true
+console.log(uniqueChar1(TC1p1.theOtherKind)) //false
+console.log(uniqueChar1(TC1p1.emptyStr)) //false
+console.log(uniqueChar1(TC1p1.stringWithNonAN)) //false
+console.log(uniqueChar1(TC1p1.stringWithNonANUnique)) //true
 console.groupEnd()
 console.group('uniqueChar2 quick tests')
-console.log(uniqueChar2(allUniqueStr)) //true
-console.log(uniqueChar2(theOtherKind)) //false
-console.log(uniqueChar2(emptyStr)) //-1
-console.log(uniqueChar2(stringWithNonAN)) //false
-console.log(uniqueChar2(stringWithNonANUnique)) //true
+console.log(uniqueChar2(TC1p1.allUniqueStr)) //true
+console.log(uniqueChar2(TC1p1.theOtherKind)) //false
+console.log(uniqueChar2(TC1p1.emptyStr)) //false
+console.log(uniqueChar2(TC1p1.stringWithNonAN)) //false
+console.log(uniqueChar2(TC1p1.stringWithNonANUnique)) //true
 console.groupEnd()
