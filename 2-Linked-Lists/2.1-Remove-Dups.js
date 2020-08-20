@@ -70,12 +70,14 @@ class LinkedList {
         while (pointer.next !== undefined) {
             if (possibleDuplicates.has(pointer.value)) {
                 trailing.next = pointer.next;
+                pointer.next = undefined;
+                pointer = trailing.next;
             }
             else {
                 possibleDuplicates.add(pointer.value);
+                trailing = pointer;
+                pointer = pointer.next;
             }
-            trailing = pointer;
-            pointer = pointer.next;
         }
         if (possibleDuplicates.has(trailing.value)) {
             trailing.next = undefined;
@@ -84,6 +86,12 @@ class LinkedList {
 }
 let myList = new LinkedList(new LNode('start'));
 myList.makeList(['a', 'a', 'b', 'b', '1', 'd', 'e', 'e', 'e', 'w', 'ac', 'ac']);
-myList.printList();
 myList.removeDuplicates();
-myList.printList();
+myList.printList(); //'a', 'b', '1', 'd', 'e', 'w', 'ac'
+let emptyList = new LinkedList();
+emptyList.removeDuplicates();
+emptyList.printList(); //'head'
+let allCopies = new LinkedList();
+allCopies.makeList(['a', 'a', 'a', 'a', 'a', 'a']);
+allCopies.removeDuplicates();
+allCopies.printList(); //'a'
