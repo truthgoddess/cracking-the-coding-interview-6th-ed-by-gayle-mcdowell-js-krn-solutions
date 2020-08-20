@@ -1,48 +1,92 @@
 class LNode {
-  private value: string
-  private next: LNode | undefined
+  private _value: string
+  private _next: LNode | undefined
   constructor(value: string, next?: LNode) {
-    this.value = value
-    this.next = next
+    this._value = value
+    this._next = next
   }
-  public setNext(node: LNode) {
-    this.next = node
+  public set next(node: LNode | undefined) {
+    this._next = node
   }
-  public getNext() {
-    return this.next
+  public get next(): LNode | undefined {
+    return this._next
   }
-  public setValue(value: string) {
-    this.value = value
+  public set value(value: string) {
+    this._value = value
   }
-  public getValue() {
-    return this.value
+  public get value() {
+    return this._value
   }
 }
 
 class LinkedList {
-  private head: LNode
-  constructor(head: LNode) {
-    this.head = head
+  private _head: LNode
+  private _tail: LNode | undefined
+  constructor(head: LNode = new LNode('head')) {
+    this._head = head
+    this._tail = undefined
   }
   public addNode(node: LNode): void {
-    let nodePointer: LNode | undefined = this.head
-    while (nodePointer?.getNext() !== undefined) {
-      nodePointer = nodePointer.getNext()
+    if (this.tail === undefined) {
+      this.head.next = node
+      this.tail = node
+    } else {
+      this.tail.next = node
+      this.tail = node
     }
-    nodePointer?.setNext(node)
   }
   public printList(): void {
     let nodePointer: LNode | undefined = this.head
     let nodeNumber: number = 0
-    while (nodePointer?.getNext !== undefined) {
-      console.log(nodeNumber, ': ', nodePointer.getValue(), '-->')
-      nodePointer = nodePointer?.getNext()
+    console.group('printing LL')
+    while (nodePointer?.next !== undefined) {
+      console.log(nodeNumber, ': ', nodePointer.value, '-->')
+      nodePointer = nodePointer?.next
       nodeNumber++
+    }
+    console.log(nodeNumber, ': ', nodePointer?.value, '-->')
+    console.log('end')
+    console.groupEnd()
+  }
+  public set head(node: LNode) {
+    this._head = node
+  }
+  public get head(): LNode {
+    return this._head
+  }
+  public set tail(node: LNode | undefined) {
+    this._tail = node
+  }
+  public get tail(): LNode | undefined {
+    return this._tail
+  }
+  public makeList(arr: Array<string>): LNode | undefined {
+    for (let item of arr) {
+      this.addNode(new LNode(item))
+    }
+    return this.head
+  }
+  public removeDuplicates(): void {
+    let possibleDuplicates = new Set<string>()
+    let trailing = this.head
+    let pointer = this.head
+    while (pointer.next !== undefined) {
+      if (possibleDuplicates.has(pointer.value)) {
+        trailing.next = pointer.next
+      } else {
+        possibleDuplicates.add(pointer.value)
+      }
+      trailing = pointer
+      pointer = pointer.next
+    }
+    if (possibleDuplicates.has(trailing.value)) {
+      trailing.next = undefined
     }
   }
 }
 
-let myList = new LinkedList(new LNode('firstNode'))
-myList.addNode(new LNode('one more'))
-myList.addNode(new LNode('one flew over'))
+let myList = new LinkedList(new LNode('start'))
+myList.makeList(['a', 'a', 'b', 'b', '1', 'd', 'e', 'e', 'e', 'w', 'ac', 'ac'])
+myList.printList()
+myList.removeDuplicates()
 myList.printList()
