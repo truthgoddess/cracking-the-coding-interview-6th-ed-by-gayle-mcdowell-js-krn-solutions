@@ -87,11 +87,11 @@ class LinkedList {
 let myList = new LinkedList(new LNode('start'));
 myList.makeList(['a', 'a', 'b', 'b', '1', 'd', 'e', 'e', 'e', 'w', 'ac', 'ac']);
 myList.removeDuplicates();
-myList.printList(); //'a', 'b', '1', 'd', 'e', 'w', 'ac'
+myList.printList(); //'start', 'a', 'b', '1', 'd', 'e', 'w', 'ac'
 let emptyList = new LinkedList();
 emptyList.removeDuplicates();
 emptyList.printList(); //'head'
 let allCopies = new LinkedList();
 allCopies.makeList(['a', 'a', 'a', 'a', 'a', 'a']);
 allCopies.removeDuplicates();
-allCopies.printList(); //'a'
+allCopies.printList(); //'head', 'a'
