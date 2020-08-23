@@ -70,7 +70,7 @@ class LinkedList {
         while (pointer.next !== undefined) {
             if (possibleDuplicates.has(pointer.value)) {
                 trailing.next = pointer.next;
-                pointer.next = undefined;
+                //pointer.next = undefined
                 pointer = trailing.next;
             }
             else {

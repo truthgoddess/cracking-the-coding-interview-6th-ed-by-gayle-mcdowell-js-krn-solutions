@@ -63,7 +63,7 @@ class LinkedList2 {
         let nodeNumber = 0;
         console.group('printing LL');
         while (nodePointer?.next !== undefined) {
-            console.log('test');
+            console.log('test'); //not inside of here
             console.log(nodeNumber, ': ', nodePointer.value, '-->');
             nodePointer = nodePointer?.next;
             nodeNumber++;
