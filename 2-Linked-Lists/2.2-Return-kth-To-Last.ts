@@ -99,7 +99,7 @@ class LinkedList2 {
 let myList2 = new LinkedList2(undefined)
 let emptyList2 = new LinkedList2(undefined)
 myList2.makeList([3, 5, 2, 33, 4, 5, 6])
-myList2.printList()
+myList2.printList() //print list
 console.log(myList2.kthToLast(2)) //Node 2: 5
 console.log(myList2.kthToLast(4)) //Node 2: 33
 console.log(myList2.kthToLast(100)) //undefined console: Error: k puts target outside of List
