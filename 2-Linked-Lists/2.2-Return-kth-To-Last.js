@@ -18,10 +18,10 @@ class Node_2 {
     }
 }
 class LinkedList2 {
-    constructor(head = new Node_2(0)) {
+    constructor(head) {
         this._head = head;
         this._tail = head;
-        this._length = 1;
+        this._length = head ? 1 : 0;
     }
     get head() {
         return this._head;
@@ -30,10 +30,10 @@ class LinkedList2 {
         this._head = node;
     }
     get tail() {
-        return this._head;
+        return this._tail;
     }
     set tail(node) {
-        this._head = node;
+        this._tail = node;
     }
     get length() {
         return this._length;
@@ -42,12 +42,12 @@ class LinkedList2 {
         this._length = length;
     }
     addNode(node) {
-        if (this.length === 1) {
+        if (this.head === undefined) {
+            this.head = node;
             this.tail = node;
-            this.head.next = this.tail;
             this.length = this.length + 1;
         }
-        else {
+        else if (this.head && this.tail) {
             this.tail.next = node;
             this.tail = node;
             this.length = this.length + 1;
@@ -63,7 +63,6 @@ class LinkedList2 {
         let nodeNumber = 0;
         console.group('printing LL');
         while (nodePointer?.next !== undefined) {
-            console.log('test'); //not inside of here
             console.log(nodeNumber, ': ', nodePointer.value, '-->');
             nodePointer = nodePointer?.next;
             nodeNumber++;
@@ -72,7 +71,32 @@ class LinkedList2 {
         console.log('end');
         console.groupEnd();
     }
+    kthToLast(k) {
+        let nodePointer = this.head;
+        let nodeNumber = 0;
+        let targetNumber = this.length - k;
+        if (nodePointer === undefined) {
+            console.log('Error: List has no Nodes.');
+            return undefined;
+        }
+        else if (k > this.length) {
+            console.log('Error: k puts target outside of List');
+            return undefined;
+        }
+        else {
+            while (nodeNumber !== targetNumber && nodePointer.next) {
+                nodePointer = nodePointer.next;
+                nodeNumber++;
+            }
+            return nodePointer;
+        }
+    }
 }
-let myList2 = new LinkedList2();
+let myList2 = new LinkedList2(undefined);
+let emptyList2 = new LinkedList2(undefined);
 myList2.makeList([3, 5, 2, 33, 4, 5, 6]);
 myList2.printList();
+console.log(myList2.kthToLast(2)); //Node 2: 5
+console.log(myList2.kthToLast(4)); //Node 2: 33
+console.log(myList2.kthToLast(100)); //undefined console: Error: k puts target outside of List
+console.log(emptyList2.kthToLast(3)); //undefined console: Error: List has no Nodes.
